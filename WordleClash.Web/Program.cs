@@ -19,6 +19,14 @@ builder.Services.AddDistributedMemoryCache();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddServerSentEvents();
 
+const string wordFile = "words.txt";
+if (!File.Exists(wordFile))
+{
+    throw new FileNotFoundException($"The file {wordFile} could not be found.");
+}
+
+var words = File.ReadAllLines(wordFile);
+builder.Services.AddSingleton(words);
 builder.Services.AddScoped<IWordRepository, WordRepository>();
 builder.Services.AddScoped<GameService>();
 builder.Services.AddScoped<LobbyService>();
