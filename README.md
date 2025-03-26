@@ -15,6 +15,6 @@ This project was created in C# following the N-Tier architecture style meaning
 there are 3 different layers in which the application is divided namely:
 - .Web (Razor pages web application serving as the presentation layer)
 - .Core (Class library serving as the business logic layer)
-- .Data (Class library built around a MySQL database serving as the persistence layer)
+- .Data (Class library built for data retrieval and storage)
 
 Furthermore there is a .Tests project which contains unit tests for the business logic
