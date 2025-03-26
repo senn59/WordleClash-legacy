@@ -2,7 +2,6 @@
 @using WordleClash.Core.Entities
 @using WordleClash.Core.Services
 @using WordleClash.Web.Utils
-@inject UserService UserService
 @inject SessionManager SessionManager
 <!DOCTYPE html>
 <html lang="en">
@@ -17,41 +16,11 @@
 </head>
 <body>
 <header>
-    @if (Url.RouteUrl(ViewContext.RouteData.Values) != "/")
-    {
-        <div class="logo">
-            <a asp-page="/Index">
-                <h1>WORDLECLASH!</h1>
-            </a>
-        </div>
-    }
-    else
-    {
-        <div class="create-account__container">
-            @{
-                var userSession = SessionManager.GetUserSession();
-                User? user = null;
-                if (userSession != null)
-                {
-                    user = UserService.GetBySession(userSession);
-                }
-            }
-            @if (user == null)
-            {
-                <form method="post" asp-page="User/Index" asp-page-handler="Create">
-                    <button>
-                        <h1>Create account</h1>
-                    </button>
-                </form>
-            }
-            else
-            {
-                <a asp-page="User/Index" asp-route-username="@user.Name">
-                    <h1>@user.Name</h1>
-                </a>
-            }
-        </div>
-    }
+    <div class="logo">
+        <a asp-page="/Index">
+            <h1>WORDLECLASH!</h1>
+        </a>
+    </div>
 </header>
 
 <div>
